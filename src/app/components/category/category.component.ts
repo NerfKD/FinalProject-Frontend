@@ -10,7 +10,7 @@ import { CategoryService } from 'src/app/services/category.service';
 export class CategoryComponent implements OnInit {
 
   categories:Category[]=[];
-  currentCategory:Category;
+  currentCategory:Category | null;
   constructor(private categoryService:CategoryService) { }
 
   ngOnInit(): void {
@@ -27,7 +27,7 @@ export class CategoryComponent implements OnInit {
     this.currentCategory = category;
   }
   setCurrentCategoryClear(){
-    this.currentCategory == null;
+    this.currentCategory = null;
   }
   
 
