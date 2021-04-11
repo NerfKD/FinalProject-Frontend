@@ -43,12 +43,14 @@ export class ProductAddComponent implements OnInit {
         this.toastrService.success(response.message,"Başarılı")
       },
       (responseError)=>{
-        if(responseError.error.Errors.length>0){
+        console.log(responseError)
+        if(responseError.error.Errors){
           for (let i = 0; i < responseError.error.Errors.length; i++) {
-            this.toastrService.error(responseError.error.Errors[i].ErrorMessage,"Doğrulama hatası")
-            
+            this.toastrService.error(responseError.error.Errors[i].ErrorMessage,"Doğrulama Hatası")
           }
-         
+        }
+        else{
+          this.toastrService.error(responseError.error.Message,"Yetki Hatası")
         }
       });
     } else {
